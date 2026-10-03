@@ -1,0 +1,24 @@
+%% REGENERATE SIMULATION PARAMETERS
+clear; clc;
+
+% --- Motor Electrical & Mechanical Parameters ---
+R   = 2.0;          % Resistance (Ohms)
+L   = 0.005;        % Inductance (Henries)
+Kt  = 0.05;         % Torque Constant (Nm/A)
+Ke  = 0.05;         % Back-EMF Constant (V/rad/s)
+N   = 50;           % Gear Ratio
+eta = 0.85;         % Efficiency
+Jm  = 0.0001;       % Motor Inertia (kg.m^2)
+Jl  = 0.01;         % Load Inertia (kg.m^2)
+b   = 0.001;        % Damping/Friction
+
+% Equivalent Inertia reflected to motor side
+Jeq = Jm + (Jl / (N^2 * eta));
+
+% --- Controller Gains & Signals ---
+Kp = 40;            % Proportional Gain
+Kd = 2;             % Derivative Gain
+target_deg = 30;    % Target in degrees
+target_rad = deg2rad(target_deg); % Target in radians
+
+disp('All motor parameters successfully loaded into the Workspace!');
